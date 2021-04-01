@@ -17,12 +17,14 @@
 
 # Índice
 * [Descripción](https://github.com/Chgv99/CIU-Face-Filters#Descripción)
+  * [Opciones](https://github.com/Chgv99/CIU-Face-Filters#Opciones)
+* [Instrucciones de uso](https://github.com/Chgv99/CIU-Face-Filters#Instrucciones-de-uso)
+  * [Error de la cámara](https://github.com/Chgv99/CIU-Face-Filters#Modificar-la-cámara)
 * [Implementación](https://github.com/Chgv99/CIU-Face-Filters#Implementación)
 * [Filtros](https://github.com/Chgv99/CIU-Face-Filters#Filtros)
   * [Six Eyes](https://github.com/Chgv99/CIU-Face-Filters#Six-Eyes)
   * [Mouth Eyes](https://github.com/Chgv99/CIU-Face-Filters#Mouth-Eyes)
-* [Instrucciones de uso](https://github.com/Chgv99/CIU-Face-Filters#Instrucciones-de-uso)
-  * [Error de la cámara](https://github.com/Chgv99/CIU-Face-Filters#Modificar-la-cámara)
+
 * [Recomendaciones y errores](https://github.com/Chgv99/CIU-Face-Filters#Recomendaciones-y-errores)
 * [Referencias](https://github.com/Chgv99/CIU-Face-Filters#Referencias)
 ---
@@ -38,6 +40,29 @@ La cámara del usuario ya se verá afectada por el primero de los filtros creado
 - Debug: Muestra algunas variables usadas para el cálculo de distancias.
 - Outlines: Muestra las "landmarks" generadas por el algoritmo. Las que están marcadas con colores son las que se usaron para todos estos cálculos.
 - Smoothness: Desactiva el [suavizado](https://github.com/Chgv99/CIU-Face-Filters#Suavizado).
+
+# Instrucciones de uso
+
+El usuario podrá cambiar el "filtro" de la cámara pulsando las flechas izquierda y derecha. Solo hay dos filtros.
+
+## Modificar la cámara
+
+Si la cámara no funciona nunca o a veces puede ser debido a que el usuario tenga varias cámaras conectadas a su ordenador. Esto es fácilmente solucionable mediante la modificación de las siguientes líneas de código:
+
+```processing
+void setup(){
+  ...
+  //Cámara
+  cam = null;
+  while (cam == null) {
+    //cam = new Capture(this, width , height-60, "");
+    cam = new Capture(this, width , height-60);
+  }
+  ...
+}
+```
+
+La línea que se encuentra sin comentar serviría para el usuario que solo posee una cámara. Si tiene el problema mencionado anteriormente, puede añadir un parámetro más (como se puede observar en la línea comentada) a la llamada, introduciendo el nombre de la cámara con la que quiere utilizar el programa. Mi cámara principal, por ejemplo, se llama "Trust Webcam", pero a veces uso la del móvil con DroidCam, la cual se llama "DroidCam Source 3" en mi caso.
 
 # Implementación
 
@@ -137,31 +162,6 @@ Este otro filtro copia la región de la boca y la pega en las regiones de los oj
 <p align="center">
   <img width="550" height="488" src="https://media.giphy.com/media/LymcESluEU2ZyqjdHP/giphy.gif">
 </p>
-
-# Instrucciones de uso
-
-El usuario podrá desplazarse por la escena usando las teclas "wasd" y mover la cámara moviendo el ratón.
-
-Es posible recoger la caja luminosa pasando por encima. Esto provoca que aparezca otra en el recinto. Recolectar 10 de ellas da acceso a una calavera luminosa. Esta, al ser recolectada, hace que aparezcan 4 focos y 4 calaveras danzando alrededor de una esfera en el centro del habitáculo.
-
-## Modificar la cámara
-
-Si la cámara no funciona nunca o a veces puede ser debido a que el usuario tenga varias cámaras conectadas a su ordenador. Esto es fácilmente solucionable mediante la modificación de las siguientes líneas de código:
-
-```processing
-void setup(){
-  ...
-  //Cámara
-  cam = null;
-  while (cam == null) {
-    //cam = new Capture(this, width , height-60, "");
-    cam = new Capture(this, width , height-60);
-  }
-  ...
-}
-```
-
-La línea que se encuentra sin comentar serviría para el usuario que solo posee una cámara. Si tiene el problema mencionado anteriormente, puede añadir un parámetro más (como se puede observar en la línea comentada) a la llamada, introduciendo el nombre de la cámara con la que quiere utilizar el programa. Mi cámara principal, por ejemplo, se llama "Trust Webcam", pero a veces uso la del móvil con DroidCam, la cual se llama "DroidCam Source 3" en mi caso.
 
 # Recomendaciones y errores
 
