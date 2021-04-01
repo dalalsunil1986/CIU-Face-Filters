@@ -138,10 +138,6 @@ Este otro filtro copia la región de la boca y la pega en las regiones de los oj
   <img width="550" height="488" src="https://media.giphy.com/media/LymcESluEU2ZyqjdHP/giphy.gif">
 </p>
 
-```processing
-
-```
-
 # Instrucciones de uso
 
 El usuario podrá desplazarse por la escena usando las teclas "wasd" y mover la cámara moviendo el ratón.
