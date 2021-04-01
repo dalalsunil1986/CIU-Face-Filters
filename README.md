@@ -134,7 +134,7 @@ private void smoothenEdges(PImage img){
 }
 ```
 
-Se ha aplicado un método que reduce la opacidad de los píxeles cuanto más cerca estén del borde del trozo que se ha recortado. En realidad, se les aplica una transparencia equivalente a la diferencia de filas y columnas entre el píxel y el borde más cercano (multiplicado por un producto que depende de la distancia de la cara con la cámara: la distancia entre una ceja y un ojo).
+Se ha aplicado un método que reduce la opacidad de los píxeles cuanto más cerca estén del borde del trozo que se ha recortado. En realidad, se les aplica una transparencia equivalente al producto de las diferencias de filas y columnas entre el píxel y los bordes más cercanos (multiplicado por un producto que depende de la distancia de la cara con la cámara: la distancia entre una ceja y un ojo).
 
 He aquí el resultado:
 
