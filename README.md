@@ -23,6 +23,7 @@
 * * [Mouth Eyes](https://github.com/Chgv99/CIU-Face-Filters#Mouth-Eyes)
 * [Instrucciones de uso](https://github.com/Chgv99/CIU-Face-Filters#Instrucciones-de-uso)
 * * [Error de la cámara](https://github.com/Chgv99/CIU-Face-Filters#Modificar-la-cámara)
+* [Recomendaciones y errores](https://github.com/Chgv99/CIU-Face-Filters#Recomendaciones-y-errores)
 * [Referencias](https://github.com/Chgv99/CIU-Face-Filters#Referencias)
 ---
 
@@ -147,7 +148,35 @@ El usuario podrá desplazarse por la escena usando las teclas "wasd" y mover la 
 
 Es posible recoger la caja luminosa pasando por encima. Esto provoca que aparezca otra en el recinto. Recolectar 10 de ellas da acceso a una calavera luminosa. Esta, al ser recolectada, hace que aparezcan 4 focos y 4 calaveras danzando alrededor de una esfera en el centro del habitáculo.
 
+## Modificar la cámara
+
+Si la cámara no funciona nunca o a veces puede ser debido a que el usuario tenga varias cámaras conectadas a su ordenador. Esto es fácilmente solucionable mediante la modificación de las siguientes líneas de código:
+
+```processing
+void setup(){
+  ...
+  //Cámara
+  cam = null;
+  while (cam == null) {
+    //cam = new Capture(this, width , height-60, "");
+    cam = new Capture(this, width , height-60);
+  }
+  ...
+}
+```
+
+La línea que se encuentra sin comentar serviría para el usuario que solo posee una cámara. Si tiene el problema mencionado anteriormente, puede añadir un parámetro más (como se puede observar en la línea comentada) a la llamada, introduciendo el nombre de la cámara con la que quiere utilizar el programa. Mi cámara principal, por ejemplo, se llama "Trust Webcam", pero a veces uso la del móvil con DroidCam, la cual se llama "DroidCam Source 3" en mi caso.
+
+# Recomendaciones y errores
+
+- Se recomienda probar el programa en un ambiente bien iluminado y sin muchos objetos de fondo.
+- La "vibración" o "titileo" de los elementos (ojos, bocas...) es inevitable por parte del alumno, ya que se debe a la detección de rostro landmark, que es muy sensible a la luz y al ruido de la cámara usada.
+- Si el usuario inclina su cara hacia los lados, los elementos (ojos, bocas...) no le seguirán la corriente. Esto se ha dejado de esta forma ya que la propia detección de caras fallará si la cara del usuario está muy inclinada. Solventar lo primero resulta una pérdida de tiempo si no se iba a poder aprovechar.
+- Lo mismo ocurre si la cara se inclina hacia fuera del plano de la pantalla o hacia dentro
+
 # Referencias
 * [Processing 3](https://processing.org/)
 * [Processing 3 Reference](https://processing.org/reference/)
 * [Face detection. Landmark Model](https://github.com/opencv/opencv_3rdparty/tree/contrib_face_alignment_20170818)
+* [OpenCV Mat](https://gist.github.com/Spaxe/3543f0005e9f8f3c4dc5)
+* [Colors](https://processing.org/reference/red_.html)
