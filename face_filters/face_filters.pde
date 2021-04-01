@@ -31,7 +31,7 @@ int leye_x, leye_y, reye_x, reye_y, eyeb_y, face_d;
 //MOUTH
 float alpha_product;
 PImage mouth;
-int mouth_x, mouth_y, mouth_amplitude, mouth_min_y, mouth_max_y;;
+int mouth_x, mouth_y, mouth_amplitude, mouth_min_y, mouth_max_y;
 
 // DEBUG
 boolean debug, outlines, smooth;
@@ -49,11 +49,8 @@ void setup() {
   //Cámara
   cam = null;
   while (cam == null) {
-    //cam = new Capture(this, width , height-60, "Trust Webcam");
-    cam = new Capture(this, width , height-60, "DroidCam Source 3");
-    
     //cam = new Capture(this, width , height-60, "");
-    //cam = new Capture(this, width , height-60);
+    cam = new Capture(this, width , height-60);
   }
   
   cam.start(); 
@@ -95,7 +92,7 @@ void draw() {
         sixEyes();
         break;
       case 1:
-        foreheadMouth();
+        mouthEyes();
         break;
       default:
         break;
@@ -134,7 +131,7 @@ void draw() {
   }
 }
 
-private void foreheadMouth(){
+private void mouthEyes(){
   //Cropped region of original image
   mouth = img.get(mouth_x-(face_d/4),mouth_y-((mouth_amplitude+20)/2),(int)(face_d*3.75),(int)(abs(mouth_amplitude+20)));
   if (smooth) {
@@ -283,38 +280,4 @@ void keyReleased(){
     }
   }
   
-}
-
-// Convert PImage (ARGB) to Mat (CvType = CV_8UC4)
-Mat toMat(PImage image) {
-  int w = image.width;
-  int h = image.height;
-  
-  Mat mat = new Mat(h, w, CvType.CV_8UC4);
-  byte[] data8 = new byte[w*h*4];
-  int[] data32 = new int[w*h];
-  arrayCopy(image.pixels, data32);
-  
-  ByteBuffer bBuf = ByteBuffer.allocate(w*h*4);
-  IntBuffer iBuf = bBuf.asIntBuffer();
-  iBuf.put(data32);
-  bBuf.get(data8);
-  mat.put(0, 0, data8);
-  
-  return mat;
-}
-
-// Convert Mat (CvType=CV_8UC4) to PImage (ARGB)
-PImage toPImage(Mat mat) {
-  int w = mat.width();
-  int h = mat.height();
-  
-  PImage image = createImage(w, h, ARGB);
-  byte[] data8 = new byte[w*h*4];
-  int[] data32 = new int[w*h];
-  mat.get(0, 0, data8);
-  ByteBuffer.wrap(data8).asIntBuffer().get(data32);
-  arrayCopy(data32, image.pixels);
-  
-  return image;
 }
