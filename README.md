@@ -19,10 +19,10 @@
 * [Descripción](https://github.com/Chgv99/CIU-Face-Filters#Descripción)
 * [Implementación](https://github.com/Chgv99/CIU-Face-Filters#Implementación)
 * [Filtros](https://github.com/Chgv99/CIU-Face-Filters#Filtros)
-* * [Six Eyes](https://github.com/Chgv99/CIU-Face-Filters#Six-Eyes)
-* * [Mouth Eyes](https://github.com/Chgv99/CIU-Face-Filters#Mouth-Eyes)
+  * [Six Eyes](https://github.com/Chgv99/CIU-Face-Filters#Six-Eyes)
+  * [Mouth Eyes](https://github.com/Chgv99/CIU-Face-Filters#Mouth-Eyes)
 * [Instrucciones de uso](https://github.com/Chgv99/CIU-Face-Filters#Instrucciones-de-uso)
-* * [Error de la cámara](https://github.com/Chgv99/CIU-Face-Filters#Modificar-la-cámara)
+  * [Error de la cámara](https://github.com/Chgv99/CIU-Face-Filters#Modificar-la-cámara)
 * [Recomendaciones y errores](https://github.com/Chgv99/CIU-Face-Filters#Recomendaciones-y-errores)
 * [Referencias](https://github.com/Chgv99/CIU-Face-Filters#Referencias)
 ---
